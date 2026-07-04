@@ -13,6 +13,7 @@ playlists = {
 }
 temperatura = dados['main']['temp'] #puxando so a descricao do clima
 
+#transfoma a temperatura nas playlists
 def estilo_musical(temperatura):
     if temperatura < 15:
         return 'frio'
@@ -25,7 +26,6 @@ def estilo_musical(temperatura):
     else:
         return 'random'
 
-estilo = estilo_musical(temperatura)
-
-link = playlists[estilo]
+estilo = estilo_musical(temperatura) #variavel pra chamar a funcao
+link = playlists[estilo]#conectando ao link
 print(link)
