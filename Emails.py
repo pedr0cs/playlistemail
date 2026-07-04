@@ -38,7 +38,7 @@ from email.mime.text import MIMEText
 
 remetente = 'taving04@gmail.com'
 destinatario = 'pedrguerra4@gmail.com'
-senha_app = 'qige erwo arhw yfdu'
+senha_app = ''
 
 assunto = 'Bom dia! Playlist do dia chegando...'
 
