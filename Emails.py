@@ -15,6 +15,7 @@ playlists = {
 temperatura = dados['main']['temp'] #puxando so a descricao do clima
 descricao = dados['weather'][0]['description']
 
+#transfoma a temperatura nas playlists
 def estilo_musical(temperatura):
     if temperatura < 15:
         return 'frio'
@@ -27,6 +28,7 @@ def estilo_musical(temperatura):
     else:
         return 'random'
 
+<<<<<<< HEAD
 estilo = estilo_musical(temperatura)
 link = playlists[estilo]
 mensagem = f'Bom dia, Pedroca! Vamos comecar o dia!\nHoje a temperatura esta {temperatura}°C\nPelo visto hoje teremos {descricao}.\nCom esse clima, a playlist do dia é:\n{link}'
@@ -49,3 +51,8 @@ with smtplib.SMTP_SSL('smtp.gmail.com', 465) as servidor:
     servidor.login(remetente, senha_app)
     servidor.sendmail(remetente, destinatario, email.as_string())
     print('Email enviado com sucesso')
+=======
+estilo = estilo_musical(temperatura) #variavel pra chamar a funcao
+link = playlists[estilo]#conectando ao link
+print(link)
+>>>>>>> 578b630353427117710dabdcafe11fc7a2fc7060
