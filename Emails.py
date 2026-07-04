@@ -1,6 +1,10 @@
+from dotenv import load_dotenv #esconder as chaves
+import os
+load_dotenv()
 import requests #importando a biblioteca
 
-url = 'https://api.openweathermap.org/data/2.5/weather?q=Austin&appid=af0c2a7052e7bc31cc40265834537c3c&units=metric&lang=pt' #api de clima
+chave_api = os.getenv('CHAVE_CLIMA')
+url = f'https://api.openweathermap.org/data/2.5/weather?q=Austin&appid={chave_api}&units=metric&lang=pt'
 resposta = requests.get(url)#puxando a biblioteca 
 dados = resposta.json()#reposta da api
 #puxando as playlists
@@ -36,7 +40,7 @@ from email.mime.text import MIMEText
 
 remetente = 'taving04@gmail.com'
 destinatario = 'pedrguerra4@gmail.com'
-senha_app = ''
+senha_app = os.getenv('SENHA_EMAIL')
 
 assunto = 'Bom dia! Playlist do dia chegando...'
 
