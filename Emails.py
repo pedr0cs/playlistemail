@@ -1,3 +1,4 @@
+import email
 import requests #importando a biblioteca
 
 url = 'https://api.openweathermap.org/data/2.5/weather?q=Austin&appid=af0c2a7052e7bc31cc40265834537c3c&units=metric&lang=pt' #api de clima
@@ -12,6 +13,7 @@ playlists = {
     'quente' : 'https://open.spotify.com/playlist/37i9dQZF1EVCu9jtlIEnHS?si=bb3b97ee02e848ae',
 }
 temperatura = dados['main']['temp'] #puxando so a descricao do clima
+descricao = dados['weather'][0]['description']
 
 def estilo_musical(temperatura):
     if temperatura < 15:
@@ -26,6 +28,24 @@ def estilo_musical(temperatura):
         return 'random'
 
 estilo = estilo_musical(temperatura)
-
 link = playlists[estilo]
-print(link)
+mensagem = f'Bom dia, Pedroca! Vamos comecar o dia!\nHoje a temperatura esta {temperatura}°C\nPelo visto hoje teremos {descricao}.\nCom esse clima, a playlist do dia é:\n{link}'
+
+import smtplib
+from email.mime.text import MIMEText
+
+remetente = 'taving04@gmail.com'
+destinatario = 'pedrguerra4@gmail.com'
+senha_app = 'qige erwo arhw yfdu'
+
+assunto = 'Bom dia! Playlist do dia chegando...'
+
+email = MIMEText(mensagem)
+email['Subject'] = assunto
+email['From'] = remetente
+email['To'] = destinatario
+
+with smtplib.SMTP_SSL('smtp.gmail.com', 465) as servidor:
+    servidor.login(remetente, senha_app)
+    servidor.sendmail(remetente, destinatario, email.as_string())
+    print('Email enviado com sucesso')
